@@ -2,7 +2,7 @@
 <hudson.plugins.emailext.ExtendedEmailPublisherDescriptor plugin="email-ext@2.57.2">
   <defaultSuffix>yandex.ru</defaultSuffix>
   <smtpAuthUsername>yagopashek</smtpAuthUsername>
-  <smtpAuthPassword>{AQAAABAAAAAQRJF1KdMOkB8t/8+D8p+m6yRMimZ30cupGROYHBUNeJg=}</smtpAuthPassword>
+  <smtpAuthPassword>{AQAAABAAAAAQMdoCCZTz1qypvpd6oUaJjEbd9yWxksj7VWUXJpio/SQ=}</smtpAuthPassword>
   <smtpHost>smtp.yandex.ru</smtpHost>
   <useSsl>true</useSsl>
   <smtpPort>465</smtpPort>
