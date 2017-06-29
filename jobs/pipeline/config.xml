@@ -27,7 +27,7 @@
       checkout([$class: &apos;GitSCM&apos;, branches: [[name: &apos;**&apos;]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: &apos;CleanBeforeCheckout&apos;], [$class: &apos;WipeWorkspace&apos;]], submoduleCfg: [], userRemoteConfigs: [[url: &apos;https://github.com/yagoyagoyago/devops.git&apos;]]])
       }
    stage(&apos;Build&apos;) {
-      sh &apos;ant pacakge -Dbuild_num=${BUILD_NUMBER}&apos;
+      sh &apos;ant package -Dbuild_num=${BUILD_NUMBER}&apos;
       sh &apos;cp build/*.jar /var/www/html/releases&apos;
    }
 }</script>
