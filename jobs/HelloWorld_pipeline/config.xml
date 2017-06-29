@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description>сборка и архивирование java приложения, следит за изменениями в репозитории</description>
+  <description>сборка и архивирование java приложения, следит за изменениями в репозитории&#xd;
+pipeline</description>
   <keepDependencies>false</keepDependencies>
   <properties>
     <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.27.0">
