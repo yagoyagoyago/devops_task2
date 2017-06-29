@@ -1,7 +1,39 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <flow-definition plugin="workflow-job@2.13">
+  <actions/>
+  <description>Helloworld job with pipeline</description>
   <keepDependencies>false</keepDependencies>
-  <properties/>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.27.0">
+      <projectUrl>https://github.com/yagoyagoyago/devops.git/</projectUrl>
+      <displayName></displayName>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>-1</daysToKeep>
+        <numToKeep>5</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+    <org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+      <triggers/>
+    </org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.36">
+    <script>node {
+   def mvnHome
+   stage(&apos;Preparation&apos;) { // for display purposes
+      // Get some code from a GitHub repository
+      checkout([$class: &apos;GitSCM&apos;, branches: [[name: &apos;**&apos;]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: &apos;CleanBeforeCheckout&apos;], [$class: &apos;WipeWorkspace&apos;]], submoduleCfg: [], userRemoteConfigs: [[url: &apos;https://github.com/yagoyagoyago/devops.git&apos;]]])
+      }
+   stage(&apos;Build&apos;) {
+      sh &apos;ant pacakge -Dbuild_num=${BUILD_NUMBER}&apos;
+      sh &apos;cp build/*.jar /var/www/html/releases&apos;
+   }
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
   <triggers/>
   <disabled>false</disabled>
 </flow-definition>
